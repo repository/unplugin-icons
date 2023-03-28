@@ -10,7 +10,7 @@ export const JSXCompiler = <Compiler>(async (
 ) => {
   const svgrCore = await importModule('@svgr/core')
   // check for v6 transform, v5 default and previous versions
-  const svgr = svgrCore.transform || svgrCore.default || svgrCore
+  const svgr = svgrCore.default?.transform || svgrCore.transform || svgrCore.default || svgrCore
   let res = await svgr(
     svg,
     {

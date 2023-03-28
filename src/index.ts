@@ -48,12 +48,8 @@ const unplugin = createUnplugin<Options | undefined>((options = {}) => {
     async load(id) {
       const config = await resolved
       const code = await generateComponentFromPath(id, config) || null
-      if (code) {
-        return {
-          code,
-          map: { version: 3, mappings: '', sources: [] } as any,
-        }
-      }
+      if (code)
+        return { code }
     },
     rollup: {
       api: {
